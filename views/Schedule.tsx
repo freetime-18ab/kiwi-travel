@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge } from '../components/UI';
+import { Card, Button, Input } from '../components/UI';
 import { ScheduleEvent, CategoryType } from '../types';
 import { db } from '../firebase';
 import { mockSchedules } from '../mockData';

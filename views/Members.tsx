@@ -123,8 +123,9 @@ export const MembersView: React.FC = () => {
 
   const handleShare = () => {
       const url = window.location.href;
-      if (navigator.share) {
-          navigator.share({
+      // TS Fix: navigator.share is not standard property in all environments
+      if ((navigator as any).share) {
+          (navigator as any).share({
               title: 'Join my KiwiTravel Trip!',
               text: 'Help me plan our New Zealand adventure.',
               url: url,
