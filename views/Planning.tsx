@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Input, Button } from '../components/UI';
+import { Card } from '../components/UI';
 import { TodoItem, Member } from '../types';
 import { db } from '../firebase';
 import { mockTodos, mockPackingList } from '../mockData';
