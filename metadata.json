@@ -1,0 +1,8 @@
+{
+  "name": "KiwiTravel",
+  "description": "A cozy, Animal Crossing-inspired group travel planner with shared itinerary, expenses, and journal.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
