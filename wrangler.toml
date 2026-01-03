@@ -1,0 +1,8 @@
+name = "kiwi-travel"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-01-01"
+
+[vars]
+# These variables should be set in the Cloudflare Pages dashboard for security,
+# but can be defined here for non-sensitive defaults if needed.
+# Do NOT commit actual API keys here.
