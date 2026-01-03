@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// Ensure only Card is imported to prevent build errors
 import { Card } from '../components/UI';
 import { TodoItem, Member } from '../types';
 import { db } from '../firebase';
@@ -27,8 +28,6 @@ export const PlanningView: React.FC<PlanningViewProps> = ({ currentUser }) => {
         });
 
         // Fetch Personal Packing List
-        // Note: For simplicity in this demo, we fetch all and filter client side or query by assignedTo
-        // Here we use a query to only get items for currentUser
         const q = query(collection(db, "packing"), where("assignedTo", "==", currentUser.id));
         const unsubPacking = onSnapshot(q, (snapshot) => {
             setPackingList(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as TodoItem)));
@@ -40,8 +39,6 @@ export const PlanningView: React.FC<PlanningViewProps> = ({ currentUser }) => {
         };
     } else {
         setTodos(mockTodos);
-        // Mock Filter: Show items assigned to me OR items with no assignment (legacy mock data)
-        // In a real app, you'd migrate legacy data.
         setPackingList(mockPackingList.filter(item => 
             !item.assignedTo || item.assignedTo === currentUser.id
         ));
@@ -63,7 +60,6 @@ export const PlanningView: React.FC<PlanningViewProps> = ({ currentUser }) => {
       const newItem: Partial<TodoItem> = {
           text: newTask,
           completed: false,
-          // Shared tasks don't strictly need assignedTo in this simple version
       };
 
       if (db) {
@@ -90,7 +86,7 @@ export const PlanningView: React.FC<PlanningViewProps> = ({ currentUser }) => {
       const newItem: Partial<TodoItem> = {
           text: newPackingItem,
           completed: false,
-          assignedTo: currentUser.id // Crucial: Assign to current user
+          assignedTo: currentUser.id 
       };
 
       if (db) {
